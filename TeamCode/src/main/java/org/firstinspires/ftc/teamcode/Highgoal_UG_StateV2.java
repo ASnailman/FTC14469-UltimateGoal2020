@@ -152,7 +152,6 @@ public class Highgoal_UG_StateV2 extends LinearOpMode {
         //Grip the wobble goal so it doesn't fall off while the robot is moving
         hexjerry.setPower(-0.6);
 
-
         waitForStart();
 
         while (opModeIsActive()) {

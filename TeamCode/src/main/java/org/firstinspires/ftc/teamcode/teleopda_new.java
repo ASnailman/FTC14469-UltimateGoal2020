@@ -23,23 +23,20 @@ import com.qualcomm.robotcore.util.Range;
  *  (Servo.class, "Gripper")
  */
 
-@TeleOp(name="MecanumDrive", group="Linear Opmode")
+@TeleOp(name="MecanumDrive", group="MecanumDrive")
 //@Disabled
 public class teleopda_new extends LinearOpMode {
 
     // Declare OpMode members.
-    private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor BackLeft = null;
-    private DcMotor FrontLeft = null;
-    private DcMotor BackRight = null;
-    private DcMotor FrontRight = null;
-    private DcMotor LeftRail = null;
-    private DcMotor RightRail = null;
-    private DcMotor AngleMotor = null;
-    private Servo Gripper = null;
-
-
-
+    ElapsedTime runtime = new ElapsedTime();
+    DcMotor BackLeft;
+    DcMotor FrontLeft;
+    DcMotor BackRight;
+    DcMotor FrontRight;
+    //DcMotor LeftRail = null;
+    //DcMotor RightRail = null;
+    //DcMotor AngleMotor = null;
+    //Servo Gripper = null;
 
     @Override
     public void runOpMode() {
@@ -53,10 +50,10 @@ public class teleopda_new extends LinearOpMode {
         BackRight = hardwareMap.get(DcMotor.class, "BackRight");
         FrontLeft = hardwareMap.get(DcMotor.class, "FrontLeft");
         FrontRight = hardwareMap.get(DcMotor.class, "FrontRight");
-        LeftRail = hardwareMap.get(DcMotor.class, "LeftRail");
-        RightRail = hardwareMap.get(DcMotor.class, "RightRail");
-        AngleMotor = hardwareMap.get(DcMotor.class, "AngleMotor");
-        Gripper = hardwareMap.get(Servo.class, "Gripper");
+        //LeftRail = hardwareMap.get(DcMotor.class, "LeftRail");
+        //RightRail = hardwareMap.get(DcMotor.class, "RightRail");
+        //AngleMotor = hardwareMap.get(DcMotor.class, "AngleMotor");
+        //Gripper = hardwareMap.get(Servo.class, "Gripper");
 
 
         // Most robots need the motor on one side to be reversed to drive forward
@@ -65,11 +62,11 @@ public class teleopda_new extends LinearOpMode {
         BackLeft.setDirection(DcMotor.Direction.FORWARD);
         FrontRight.setDirection(DcMotor.Direction.REVERSE);
         BackRight.setDirection(DcMotor.Direction.REVERSE);
-        RightRail.setDirection(DcMotor.Direction.REVERSE);
-        AngleMotor.setDirection(DcMotor.Direction.FORWARD);
-        LeftRail.setDirection(DcMotor.Direction.FORWARD);
-        AngleMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        Gripper.setDirection(Servo.Direction.FORWARD);
+        //RightRail.setDirection(DcMotor.Direction.REVERSE);
+        //AngleMotor.setDirection(DcMotor.Direction.FORWARD);
+        //LeftRail.setDirection(DcMotor.Direction.FORWARD);
+        //AngleMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //Gripper.setDirection(Servo.Direction.FORWARD);
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
@@ -80,11 +77,11 @@ public class teleopda_new extends LinearOpMode {
             // run until the end of the match (driver presses STOP)
             while (opModeIsActive()) {
 
-                if (gamepad2.y) {
-                    Gripper.setPosition(0.8);
-                } else if (gamepad2.b) {
-                    Gripper.setPosition(0);
-                }
+                //if (gamepad2.y) {
+                    //Gripper.setPosition(0.8);
+                //} else if (gamepad2.b) {
+                    //Gripper.setPosition(0);
+                //}
 
                 // Setup a variable for each drive wheel to save power level for telemetry
                 double leftBackPower;
@@ -105,9 +102,9 @@ public class teleopda_new extends LinearOpMode {
                 rightBackPower = Range.clip(drive + turn + strafe, -1.0, 1.0);
                 leftFrontPower = Range.clip(drive - turn + strafe, -1.0, 1.0);
                 rightFrontPower = Range.clip(drive + turn - strafe, -1.0, 1.0);
-                RightRail.setPower(-(gamepad2.left_stick_y)*2);
-                LeftRail.setPower((gamepad2.left_stick_y)*2);
-                AngleMotor.setPower((gamepad2.right_stick_y));
+                //RightRail.setPower(-(gamepad2.left_stick_y)*2);
+                //LeftRail.setPower((gamepad2.left_stick_y)*2);
+                //AngleMotor.setPower((gamepad2.right_stick_y));
 
 
 
